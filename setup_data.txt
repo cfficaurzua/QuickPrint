@@ -1,0 +1,7 @@
+SET folderdir=PLACEHOLDER
+for %%I in (%folderdir%\*.pdf) do pdftk "%%I" cat 1 output "%folderdir%\%%~nI-page1.pdf"
+pdftk %folderdir%\*-page1.pdf cat output %folderdir%\combined.pdf
+"C:\Program Files\bioPDF\PDF Writer\pdfcmd.exe" command=printpdf input="%folderdir%\combined.pdf"
+timeout /t 1
+del %folderdir%\*.pdf /q
+cmd \k
